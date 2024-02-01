@@ -7,9 +7,10 @@ export default function Home() {
   const [render, setRender] = useState("login");
   const [email, setEmail] = useState("");
   useEffect(() => {
-    if (localStorage.getItem("auth") === 'true') {
-      setRender('landing')
+    if (localStorage.getItem("auth") === "true") {
+      setRender("landing");
     }
+    console.log(localStorage.getItem("email"))
   }, []);
 
   const handleLogin = async (e, formdata) => {
@@ -22,7 +23,8 @@ export default function Home() {
     e.preventDefault();
     const resData = await axios.get(`/api/getOtp?user=${email}`);
     if (input == resData.data[0].otp) {
-      localStorage.setItem("auth", 'true');
+      localStorage.setItem("auth", "true");
+      localStorage.setItem("email", email);
       setRender("landing");
     }
   };
@@ -30,7 +32,15 @@ export default function Home() {
     <div>
       {render == "login" && <Login handleLogin={handleLogin} />}
       {render == "verify" && <Verify handleVerify={handleVerify} />}
-      {render == "landing" && <div>Hello</div>}
+      {render == "landing" && (
+        <div>
+          <div>
+            <button onClick={() => localStorage.setItem("auth", "false")}>
+              Logout
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
