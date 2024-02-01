@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-function Login({handleLogin}) {
-    const [formdata, setFormdata] = useState('');
+function Verify({handleVerify}) {
+    const [otpdata, setOtpdata] = useState('');
   return (
     <div>
       <div className="flex">
@@ -10,26 +10,26 @@ function Login({handleLogin}) {
           </span>
           <span>
             <p className="text-3xl font-semibold text-gray-700 mx-3 my-10">
-              Login to your account or <br /> make a new account.
+              Verify your account
             </p>
           </span>
           <span>
-            <form onSubmit={(event)=>handleLogin(event ,formdata)}>
+            <form onSubmit={(event)=>handleVerify(event ,otpdata)}>
             <label
-            htmlFor="email"
+            htmlFor="otp"
             className="text-base font-semibold text-gray-700 mx-4 my-2"
           >
-            Enter email
+            Enter Otp
           </label>
           <input
-            type="email"
-            name="email"
-            id="email"
+            type="number"
+            name="otp"
+            id="number"
             className="mx-3 border-2 w-[90%] py-4 px-2 mt-3 rounded-md hover:shadow-md"
             placeholder="name@mail.com"
             onChange={(e) => {
               const input = e.target.value;
-              setFormdata(input);
+              setOtpdata(input);
             }}
             required
           />
@@ -53,4 +53,4 @@ function Login({handleLogin}) {
   );
 }
 
-export default Login;
+export default Verify;
