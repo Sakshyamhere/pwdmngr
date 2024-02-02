@@ -1,16 +1,18 @@
+import Landing from "@/components/Landing";
 import Login from "@/components/Login";
 import Verify from "@/components/Verify";
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+
   const [render, setRender] = useState("login");
   const [email, setEmail] = useState("");
   useEffect(() => {
     if (localStorage.getItem("auth") === "true") {
       setRender("landing");
     }
-    console.log(localStorage.getItem("email"))
   }, []);
 
   const handleLogin = async (e, formdata) => {
@@ -28,18 +30,17 @@ export default function Home() {
       setRender("landing");
     }
   };
+  const handleLogout = async () => {
+    localStorage.setItem("auth", "false");
+    localStorage.setItem("email", "");
+    setRender("login");
+  }
   return (
     <div>
       {render == "login" && <Login handleLogin={handleLogin} />}
       {render == "verify" && <Verify handleVerify={handleVerify} />}
       {render == "landing" && (
-        <div>
-          <div>
-            <button onClick={() => localStorage.setItem("auth", "false")}>
-              Logout
-            </button>
-          </div>
-        </div>
+       <Landing handleLogout={handleLogout}/>
       )}
     </div>
   );

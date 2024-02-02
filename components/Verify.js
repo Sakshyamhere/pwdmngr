@@ -26,7 +26,7 @@ function Verify({handleVerify}) {
             name="otp"
             id="number"
             className="mx-3 border-2 w-[90%] py-4 px-2 mt-3 rounded-md hover:shadow-md"
-            placeholder="name@mail.com"
+            placeholder="12345"
             onChange={(e) => {
               const input = e.target.value;
               setOtpdata(input);
