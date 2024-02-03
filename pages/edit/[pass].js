@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { IoMdHome, IoMdArrowBack } from "react-icons/io";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 function Pass() {
   const router = useRouter();
   const [authable, setAuthable] = useState(false);
@@ -176,6 +177,9 @@ function Pass() {
           </div>
         </div>
       )}
+      <div className="fixed bottom-0 w-full">
+      <Footer/>
+      </div>
     </div>
   );
 }

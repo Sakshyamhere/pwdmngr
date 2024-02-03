@@ -4,6 +4,7 @@ import { TbWorld } from "react-icons/tb";
 import Modal from "./Modal";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Footer from "./Footer";
 function Landing({ handleLogout }) {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -117,6 +118,9 @@ function Landing({ handleLogout }) {
         ) : (
           <p className="text-center">Currently, there is no password saved.</p>
         )}
+      </div>
+      <div className="fixed bottom-0 w-full">
+      <Footer/>
       </div>
     </div>
   );

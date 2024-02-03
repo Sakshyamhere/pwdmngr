@@ -10,7 +10,7 @@ function Verify({handleVerify}) {
           </span>
           <span>
             <p className="text-3xl font-semibold text-gray-700 mx-3 my-10">
-              Verify your account
+              Verify your account <br/> Check your mail.
             </p>
           </span>
           <span>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { IoMdHome } from "react-icons/io";
 import { FaRegCopy, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 function Site() {
   const router = useRouter();
@@ -54,7 +55,7 @@ function Site() {
               <div className="flex w-full flex-col justify-center items-center">
                 {userData.map((items, index) => (
                   <div
-                    className="bg-gray-400 my-10 mx-2 p-4 w-[90%] md:w-1/2 shadow-md rounded-md"
+                    className="bg-gray-300 my-10 mx-2 p-4 w-[90%] md:w-1/2 shadow-md rounded-md"
                     key={index}
                   >
                     <div className="relative">
@@ -63,7 +64,7 @@ function Site() {
                         type="text"
                         value={items.username}
                         name="text"
-                        className="w-full bg-gray-500 rounded border border-gray-300text-base outline-none text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                        className="w-full bg-gray-400 rounded border border-gray-300text-base outline-none text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                         placeholder="Password"
                         disabled
                       />
@@ -81,7 +82,7 @@ function Site() {
                         value={items.password}
                         id={`pass${index}`}
                         name="password"
-                        className="w-full bg-gray-500 rounded border border-gray-300text-base outline-none text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                        className="w-full bg-gray-400 rounded border border-gray-300text-base outline-none text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                         disabled
                       />
                       <div className="flex absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer my-3 text-xl">
@@ -110,7 +111,7 @@ function Site() {
                       type="text"
                       value={items.description}
                       name="text"
-                      className="w-full bg-gray-500 rounded border border-gray-300text-base outline-none text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-400 rounded border border-gray-300text-base outline-none text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       placeholder="Password"
                       disabled
                     />
@@ -148,6 +149,9 @@ function Site() {
           </div>
         </div>
       )}
+      <div className="fixed bottom-0 w-full">
+      <Footer/>
+      </div>
     </div>
   );
 }
