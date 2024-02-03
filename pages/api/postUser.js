@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         );
         // await otp.save();
         res.status(200).json({ done: true, otp: otp });
-        transporter.sendMail({
+       await transporter.sendMail({
           from: '"pongdomgr@manager.com"<pongdomgr@manager.com>',
           to: email,
           subject: "Pongdo Manager",
@@ -42,7 +42,7 @@ export default async function handler(req, res) {
         });
         await otp.save();
         res.status(200).json({ done: true, otp: otp, user: user });
-        transporter.sendMail({
+       await transporter.sendMail({
           from: '"pongdomgr@manager.com"<pongdomgr@manager.com>',
           to: email,
           subject: "Pongdo Manager",
