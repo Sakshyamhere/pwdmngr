@@ -9,7 +9,7 @@ function Landing({ handleLogout }) {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [add, setAdd] = useState(false);
-  // const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
   const [userData, setUserData] = useState([]);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -17,13 +17,15 @@ function Landing({ handleLogout }) {
     setEmail(userEmail);
     if (!userEmail) {
       return;
-    } else {
+    } if(userEmail && query.length == 0 ) {
       getPass(userEmail);
+    }
+    if (userEmail && query.length !== 0) {
+      getPassByQuery(userEmail)
     }
     const sortArray = () => {
       let arr = [];
       userData.forEach((items) => arr.push(items.site));
-      //   const uniqueArray = [...new Set(arr)];
       const uniqueArray = arr.reduce((acc, value) => {
         if (acc[value]) {
           acc[value].repetition++;
@@ -33,12 +35,23 @@ function Landing({ handleLogout }) {
         return acc;
       }, {});
       setData(Object.values(uniqueArray));
-      //   setData(uniqueArray)
     };
     if (userData.length !== 0) {
       sortArray();
     }
-  }, [userData.length]);
+  
+  }, [userData.length , query.length]);
+  const getPassByQuery = async(email) => {
+    try {
+      const resData = await axios.get(
+        `/api/getDataByQuery?user=${email}&search=${query}`
+      );
+      const data = resData.data;
+      setUserData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const getPass = async (email) => {
     try {
       const resData = await axios.get(`/api/getPass?user=${email}`);
@@ -72,13 +85,13 @@ function Landing({ handleLogout }) {
             <FaPowerOff className="m-1" />
           </div>
         </button>
-        {/* 
+        
         <input
           type="text"
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search...."
           className="border-2 w-[90%] md:w-1/2 py-4 px-2 mt-3 rounded-lg hover:shadow-md"
-        /> */}
+        />
       </div>
       <div className="flex mx-auto w-[90%] md:w-1/2 mb-10">
         <div className="flex flex-col w-full">

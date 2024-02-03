@@ -134,7 +134,7 @@ function Site() {
             {userData.length == 0 && (
               <div className="flex flex-col justify-center items-center">
                 <div>
-                  <p className="bg-gray-400 p-2 rounded-sm my-10">
+                  <p className="bg-gray-400 p-2 rounded-sm my-10 mb-[60%]">
                     No password saved with this site.
                     <Link
                       className="text-blue-900 underline underline-offset-2"
@@ -149,7 +149,7 @@ function Site() {
           </div>
         </div>
       )}
-      <div className="mt-[20%] bottom-0 w-full">
+      <div className="mt-[40%] bottom-0 w-full">
       <Footer/>
       </div>
     </div>

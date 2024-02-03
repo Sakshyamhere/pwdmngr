@@ -156,7 +156,7 @@ function Pass() {
                     )}
 
                     {userData.length == 0 && (
-                      <div className="flex flex-col justify-center items-center">
+                      <div className="flex flex-col justify-center items-center mb-[60%]">
                         <div>
                           <p className="bg-gray-400 p-2 rounded-sm my-10">
                             No password saved with this site.
@@ -177,7 +177,7 @@ function Pass() {
           </div>
         </div>
       )}
-      <div className="mt-[20%] bottom-0 w-full">
+      <div className="mt-[60%] bottom-0 w-full">
       <Footer/>
       </div>
     </div>
