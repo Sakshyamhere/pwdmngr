@@ -1,7 +1,6 @@
 
 import passSchema from "@/modal/passSchema";
 import connectDB from "../../lib/connectDB";
-import otpSchema from "@/modal/otpSchema";
 
 export default async function handler(req, res) {
     connectDB()

@@ -52,6 +52,7 @@ function Landing({ handleLogout }) {
     const dueData = { email, username, site, password, desc };
     axios.post("api/postPass", { dueData });
     setUserData([...userData, dueData]);
+    setAdd(false)
   };
   return (
     <div>

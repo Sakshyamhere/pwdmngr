@@ -116,7 +116,7 @@ function Modal({ closeAdd, handlePostPass }) {
                     id="message"
                     name="message"
                     value={desc}
-                    rows={4}
+                    rows={2}
                     className="w-full bg-white rounded border border-gray-300h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                     placeholder="Description"
                     onChange={(e) => {
