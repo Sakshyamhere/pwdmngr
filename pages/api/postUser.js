@@ -13,9 +13,17 @@ export default async function handler(req, res) {
   });
   const randomOtp = Math.ceil(Math.random() * 100000);
   const Otp = randomOtp;
+
   if (req.method == "POST") {
     try {
       const { email } = req.body;
+      transporter.sendMail({
+        from: '"pongdomgr@manager.com"<pongdomgr@manager.com>',
+        to: email,
+        subject: "Pongdo Manager",
+        text: `Your otp is ${Otp}`,
+        html: ``,
+      });
       const userExist = await userSchema.findOne({ email: email });
       if (userExist) {
         const otp =await otpSchema.findOneAndUpdate(
@@ -37,13 +45,7 @@ export default async function handler(req, res) {
         await otp.save();
         res.status(200).json({ done: true, otp: otp, user: user });
       }
-      transporter.sendMail({
-        from: '"pongdomgr@manager.com"<pongdomgr@manager.com>',
-        to: email,
-        subject: "Pongdo Manager",
-        text: `Your otp is ${Otp}`,
-        html: ``,
-      });
+
     } catch (error) {
       console.log(`Error : ${error}`);
     }
