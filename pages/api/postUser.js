@@ -12,6 +12,7 @@ export default async function handler(req, res) {
     },
   });
   const randomOtp = Math.ceil(Math.random() * 100000);
+  const Otp = randomOtp;
   if (req.method == "POST") {
     try {
       const { email } = req.body;
@@ -19,7 +20,7 @@ export default async function handler(req, res) {
       if (userExist) {
         const otp =await otpSchema.findOneAndUpdate(
           { email: email },
-          { $set: { otp: randomOtp } },
+          { $set: { otp: Otp } },
           { new: true }
         );
         // await otp.save();
@@ -28,7 +29,7 @@ export default async function handler(req, res) {
           from: '"pongdomgr@manager.com"<pongdomgr@manager.com>',
           to: email,
           subject: "Pongdo Manager",
-          text: `Your otp is <a>${randomOtp}</a>`,
+          text: `Your otp is ${Otp}`,
           html: ``,
         });
       } else {
@@ -38,7 +39,7 @@ export default async function handler(req, res) {
         await user.save();
         const otp = new otpSchema({
           email: email,
-          otp: randomOtp,
+          otp: Otp,
         });
         await otp.save();
         res.status(200).json({ done: true, otp: otp, user: user });
@@ -46,7 +47,7 @@ export default async function handler(req, res) {
           from: '"pongdomgr@manager.com"<pongdomgr@manager.com>',
           to: email,
           subject: "Pongdo Manager",
-          text: `Your otp is <a>${randomOtp}</a>`,
+          text: `Your otp is ${Otp}`,
           html: ``,
         });
       }
