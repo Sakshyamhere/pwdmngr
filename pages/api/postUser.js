@@ -29,7 +29,7 @@ export default async function handler(req, res) {
           to: email,
           subject: "Pongdo Manager",
           text: `Your otp is <a>${randomOtp}</a>`,
-          html: `<h1>Your otp is ${randomOtp}</h1><br/><b>This otp expires in 2 minutes</b>`,
+          html: ``,
         });
       } else {
         const user = new userSchema({
