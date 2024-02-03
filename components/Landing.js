@@ -119,7 +119,7 @@ function Landing({ handleLogout }) {
           <p className="text-center">Currently, there is no password saved.</p>
         )}
       </div>
-      <div className="bottom-0 w-full">
+      <div className="fixed bottom-0 w-full">
       <Footer/>
       </div>
     </div>

@@ -177,7 +177,7 @@ function Pass() {
           </div>
         </div>
       )}
-      <div className=" bottom-0 w-full">
+      <div className="mt-[20%] bottom-0 w-full">
       <Footer/>
       </div>
     </div>
