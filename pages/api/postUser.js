@@ -25,13 +25,6 @@ export default async function handler(req, res) {
         );
         // await otp.save();
         res.status(200).json({ done: true, otp: otp });
-       await transporter.sendMail({
-          from: '"pongdomgr@manager.com"<pongdomgr@manager.com>',
-          to: email,
-          subject: "Pongdo Manager",
-          text: `Your otp is ${Otp}`,
-          html: ``,
-        });
       } else {
         const user = new userSchema({
           email: email,
@@ -43,14 +36,14 @@ export default async function handler(req, res) {
         });
         await otp.save();
         res.status(200).json({ done: true, otp: otp, user: user });
-       await transporter.sendMail({
-          from: '"pongdomgr@manager.com"<pongdomgr@manager.com>',
-          to: email,
-          subject: "Pongdo Manager",
-          text: `Your otp is ${Otp}`,
-          html: ``,
-        });
       }
+      await transporter.sendMail({
+        from: '"pongdomgr@manager.com"<pongdomgr@manager.com>',
+        to: email,
+        subject: "Pongdo Manager",
+        text: `Your otp is ${Otp}`,
+        html: ``,
+      });
     } catch (error) {
       console.log(`Error : ${error}`);
     }
