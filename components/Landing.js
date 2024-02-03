@@ -9,7 +9,7 @@ function Landing({ handleLogout }) {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [add, setAdd] = useState(false);
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
   const [userData, setUserData] = useState([]);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -53,7 +53,7 @@ function Landing({ handleLogout }) {
     const dueData = { email, username, site, password, desc };
     axios.post("api/postPass", { dueData });
     setUserData([...userData, dueData]);
-    setAdd(false)
+    setAdd(false);
   };
   return (
     <div>
@@ -72,13 +72,13 @@ function Landing({ handleLogout }) {
             <FaPowerOff className="m-1" />
           </div>
         </button>
-
+        {/* 
         <input
           type="text"
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search...."
           className="border-2 w-[90%] md:w-1/2 py-4 px-2 mt-3 rounded-lg hover:shadow-md"
-        />
+        /> */}
       </div>
       <div className="flex mx-auto w-[90%] md:w-1/2 mb-10">
         <div className="flex flex-col w-full">
@@ -120,7 +120,7 @@ function Landing({ handleLogout }) {
         )}
       </div>
       <div className="fixed bottom-0 w-full">
-      <Footer/>
+        <Footer />
       </div>
     </div>
   );
